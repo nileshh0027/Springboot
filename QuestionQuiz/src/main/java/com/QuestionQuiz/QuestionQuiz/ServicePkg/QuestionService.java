@@ -23,4 +23,10 @@ public class QuestionService {
 	{
 		return repo.findByCategory(category);
 	}
+	
+	public String addQuestion(Question question)
+	{
+		repo.save(question);
+		return "success";
+	}
 }
