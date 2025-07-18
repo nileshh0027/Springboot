@@ -3,7 +3,7 @@ package com.QuestionQuiz.QuestionQuiz;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "questions")
+@Table(name = "question")
 public class Question {
 
     @Id
@@ -25,6 +25,8 @@ public class Question {
 
     @Column(name = "right_answer")
     private String rightAnswer;
+    
+
 
     // Constructors
     public Question() {}
@@ -45,7 +47,7 @@ public class Question {
 
     // Getters and Setters
 
-    public int getId() {
+	public int getId() {
         return id;
     }
 
