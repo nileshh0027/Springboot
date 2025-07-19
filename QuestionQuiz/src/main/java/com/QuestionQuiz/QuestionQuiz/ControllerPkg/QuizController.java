@@ -7,12 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.QuestionQuiz.QuestionQuiz.Question;
 import com.QuestionQuiz.QuestionQuiz.QuestionWrapper;
+import com.QuestionQuiz.QuestionQuiz.Response;
 import com.QuestionQuiz.QuestionQuiz.ServicePkg.QuizService;
 
 @RestController
@@ -32,6 +32,12 @@ public class QuizController {
 	public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable int id)
 	{
 		return quizService.getQuizQuestions(id);
+	}
+	
+	@PostMapping("/submit/{id}")
+	public ResponseEntity<Integer> submitQuiz(@PathVariable int id,@RequestBody List<Response> responses)
+	{
+		return quizService.calculateResult(id,responses);
 	}
 	
 }
